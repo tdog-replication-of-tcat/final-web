@@ -19,8 +19,14 @@
 	    <img src="banner.jpg">
             <h1>T狗盃<del>資安</del>競賽</h1>
 	    <hr>
-            <div>
-            <?=get_challenge_name($_GET['id']);?>
+	    <div>
+            <?php $challenge = get_challenge_object_for_id($_GET['id']); ?>
+            <h2><?=$challenge->name;?></h2>
+	    <p><?=$challenge->desc;?></p>
+            <?php
+                if($challenge->file)
+                    echo '附檔連結：<a href="' . $challenge->file . '">' . $challenge->file . '</a>';
+            ?>
             </div>
 	    </br>
             <label>答案：</label><input type="textbox" id="answer" length="50" />

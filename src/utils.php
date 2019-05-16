@@ -26,10 +26,18 @@ function button_color($id){
 	}
 }
 
-function get_challenge_name($id){
-    $challenges = json_decode(file_get_contents('src/challenges.json'));
-    return $challenges[$id]->name;
+function get_challenge_objects(){
+    return json_decode(file_get_contents('src/challenges.json'));
 }
+
+function get_challenge_object_for_id($id){
+    return get_challenge_objects()[$id];
+}
+
+function get_challenge_name($id){
+    return get_challenge_object_for_id($id)->name;
+}
+
 
 function save_answer($id, $answer){
     if (!$_SESSION['somecode'])
