@@ -26,7 +26,7 @@
             <label>答案：</label><input type="textbox" id="answer" length="50" />
             </br></br>
             <input type="hidden" id="cid" value="<?=$_GET['id']?>"/>
-            <button onclick="save_answer()">確認送出</button><button onclick="back_to_dashboard()">跳過這題，稍後在答</button>
+            <button onclick="save_answer()">確認送出</button><button onclick="back_to_dashboard()">跳過這題，稍後再答</button>
         </center>
     </body>
 </html>
