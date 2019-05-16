@@ -14,6 +14,6 @@ function button_color($id){
 }
 
 function get_challenge_name($id){
-    // Read from JSON or DB?
-    return "TODO";
+    $challenges = json_decode(file_get_contents('src/challenges.json'));
+    return $challenges[$id]->name;
 }
