@@ -5,12 +5,14 @@
         die('Fuck off');
     }else{
         include('src/utils.php');
-	$_SESS['somecode'] = (string)$POST["somecode"];
+	$_SESSION['somecode'] = (string)$_POST["somecode"];
     }
 ?>
 
 <html>
     <head>
+        <script>var somecode="<?=$_SESSION['somecode']?>";</script>
+        <script src="main.js"></script>
     </head>
     <body>
 	<center>
@@ -34,7 +36,7 @@ for ($i=0; $i<$hei; $i++){
 ?>
             </div>
             </br></br></br>
-            <button>提早結束作答</button>
+            <button>我已完成作答，提前結束考試!</button>
         </center>
     </body>
 </html>
