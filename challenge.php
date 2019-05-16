@@ -25,7 +25,7 @@
 	    <p><?=$challenge->desc;?></p>
             <?php
                 if($challenge->file)
-                    echo '附檔連結：<a href="' . $challenge->file . '">' . $challenge->file . '</a>';
+                    echo '附檔連結：<a href="' . $challenge->file . '" target="_blank">' . $challenge->file . '</a>';
             ?>
             </div>
 	    </br>
