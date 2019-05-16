@@ -8,6 +8,7 @@
         include('src/utils.php');
     }
 
-$flag = base64_decode($_GET['flag'], true);
-save_answer(intval($_GET['id']), $flag);
-header('Location: /dashboard.php?somecode=' . $_SESSION['somecode']);
+    $flag = base64_decode($_GET['flag'], true);
+    if($flag)
+        save_answer(intval($_GET['id']), $flag);
+    header('Location: /dashboard.php?somecode=' . $_SESSION['somecode']);
