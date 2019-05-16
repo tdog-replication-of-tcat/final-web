@@ -1,3 +1,4 @@
 [submodule "src/challenges"]
 	path = src/challenges
 	url = git@github.com:tdog-replication-of-tcat/final-challenges.git
+	branch = master
