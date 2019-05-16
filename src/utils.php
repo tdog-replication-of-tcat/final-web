@@ -1,10 +1,23 @@
 <?php
 session_start();
+require_once 'src/config.php';
 
 function is_answered($id){
     // Query DB select * from table where somecode = $_SESS['somecode'] and cid = $id;
     // if rows > 1 return true 
-    return rand(0,1) == 1;;
+    if (!$_SESSION['somecode'])
+        die('You don\'t have somecode');
+
+    global $db;
+    $stmt = $db->prepare("SELECT count(*) FROM `submit_log` WHERE somecode=:somecode and cid=:cid");
+    $stmt->execute([
+	'somecode' => $_SESSION['somecode'],
+        'cid' => $id
+    ]);
+
+    $res = intval($stmt->fetch(PDO::FETCH_ASSOC)['count(*)']);
+
+    return $res;
 }
 
 function button_color($id){
@@ -16,4 +29,19 @@ function button_color($id){
 function get_challenge_name($id){
     $challenges = json_decode(file_get_contents('src/challenges.json'));
     return $challenges[$id]->name;
+}
+
+function save_answer($id, $answer){
+    if (!$_SESSION['somecode'])
+        die('You don\'t have somecode');
+
+    // Query DB Insert 
+    global $db;
+    $stmt = $db->prepare('INSERT INTO `submit_log` (`somecode`, `cid`, `flag`) VALUES (:somecode, :cid, :flag)');
+    $stmt->execute([
+	'somecode' => $_SESSION['somecode'],
+        'cid' => $id,
+	'flag' => $answer
+    ]);
+    return true;
 }

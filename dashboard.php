@@ -1,11 +1,11 @@
 <?php
-    if(!isset($_POST["somecode"])){
+    if(!$_GET["somecode"]){
         //滾回去登入
 	header('Location: /');
         die('Fuck off');
     }else{
         include('src/utils.php');
-	$_SESSION['somecode'] = (string)$_POST["somecode"];
+	$_SESSION['somecode'] = (string)$_GET["somecode"];
     }
 ?>
 
@@ -36,7 +36,7 @@ for ($i=0; $i<$hei; $i++){
 ?>
             </div>
             </br></br></br>
-            <button>我已完成作答，提前結束考試!</button>
+            <button onclick="just_logout()">我已完成作答，提前結束考試!</button>
         </center>
     </body>
 </html>
